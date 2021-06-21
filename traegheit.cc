@@ -23,14 +23,32 @@ int main() {
   double m = M / N; // Masse eines Massenpunktes
   for (int i = 0; i < N; ++i) {
     Vektor x = zm->punkt();
+    Vektor c = x - a;
+    Vektor d = c.kreuz(u);
     // Abstand Punkt x und Gerade a + t*u
     // Vektor n = ...;//Normalenvektor x-a kreuz u
-    double r = 0; //|n|/|u|
+    double r = d.betrag()/u.betrag(); //|n|/|u|
     // std::cout << x << " :" << r << std::endl;
     // addiere Beitrag des Massenpunktes zum Traegheitsmoment
     J += m * r * r;
   }
   std::cout << "Massentraegheitsmoment fuer einen Zylindermantel"
+            << " mit a = " << a << " und u = " << u << ": " << J << std::endl;
+  
+  std::unique_ptr<Vollzylinder> vz(new Vollzylinder(ZM_R, ZM_L));
+  J = 0;
+  for (int i = 0; i < N; ++i) {
+    Vektor x = vz->punkt();
+    Vektor c = x - a;
+    Vektor d = c.kreuz(u);
+    // Abstand Punkt x und Gerade a + t*u
+    // Vektor n = ...;//Normalenvektor x-a kreuz u
+    double r = d.betrag()/u.betrag(); //|n|/|u|
+    // std::cout << x << " :" << r << std::endl;
+    // addiere Beitrag des Massenpunktes zum Traegheitsmoment
+    J += m * r * r;
+  }
+  std::cout << "Massentraegheitsmoment fuer einen Vollzylinder"
             << " mit a = " << a << " und u = " << u << ": " << J << std::endl;
             
   return 0;
