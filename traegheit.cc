@@ -7,7 +7,7 @@
 int main() {
   const int N = 10000;     // Anzahl Integrationspunkte
   const double M = 1;      // Masse des Zylindermantels
-  const double ZM_R = 2.0; // Radius der Zylindermantels
+  const double ZM_R = 1.0; // Radius der Zylindermantels
   const double ZM_L = 1.0; // Laenge des Zylindermantels
 
   Vektor a; // Punkt auf der Rotationsachse
@@ -36,7 +36,7 @@ int main() {
             << " mit a = " << a << " und u = " << u << ": " << J << std::endl;
   
   std::unique_ptr<Vollzylinder> vz(new Vollzylinder(ZM_R, ZM_L));
-
+  J = 0;
   for (int i = 0; i < N; ++i) {
     Vektor x = vz->punkt();
     Vektor c = x - a;
