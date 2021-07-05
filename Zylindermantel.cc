@@ -6,6 +6,8 @@
 Zylindermantel::Zylindermantel(double nr, double nl) {
   r_ = nr;
   l_ = nl;
+  k_name = "Zylindermantel";
+  k_masse = 1;
 }
 
 Vektor Zylindermantel::punkt() {

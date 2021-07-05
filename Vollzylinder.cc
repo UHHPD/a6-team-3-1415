@@ -6,6 +6,8 @@
 Vollzylinder::Vollzylinder(double nr, double nl) {
   r_ = nr;
   l_ = nl;
+  k_name = "Vollzylinder";
+  k_masse = 1;
 }
 
 Vektor Vollzylinder::punkt() {
